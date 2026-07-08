@@ -1,17 +1,22 @@
 import dotenv from "dotenv";
+
+// Load environment variables FIRST
 dotenv.config();
 
-import app from "./app";
-// import { connectDB } from "./config/db";
+async function bootstrap() {
+  const { default: app } = await import("./app");
+  const { connectDB } = await import("./config/db");
 
-const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5000;
 
-async function startServer() {
-  // await connectDB();
+  await connectDB();
 
   app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 }
 
-startServer();
+bootstrap().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

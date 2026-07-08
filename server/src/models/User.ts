@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema(
   {
-    fullName: {
+    name: {
       type: String,
       required: true,
     },
@@ -22,16 +22,10 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-
-    plan: {
-      type: String,
-      enum: ["FREE", "VIP1", "VIP2", "VIP3"],
-      default: "FREE",
-    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export default model("User", userSchema);
+export const User = model("User", userSchema);

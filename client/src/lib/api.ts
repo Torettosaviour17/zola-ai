@@ -1,19 +1,6 @@
-const API_URL = "http://localhost:5000";
+import axios from "axios";
 
-export async function api<T>(
-  endpoint: string,
-  options?: RequestInit,
-): Promise<T> {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    ...options,
-  });
-
-  if (!response.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  return response.json();
-}
+export const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+  withCredentials: true,
+});
