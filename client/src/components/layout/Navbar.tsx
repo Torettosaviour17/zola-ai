@@ -5,7 +5,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="text-2xl font-bold text-white">
-          Zola
+          Zola Ai
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
