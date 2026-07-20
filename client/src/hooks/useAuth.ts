@@ -34,12 +34,36 @@ export function useAuth() {
     }
   }
 
+  async function getCurrentUser() {
+    try {
+      setLoading(true);
+
+      const response = await authService.getCurrentUser();
+
+      setUser(response.user);
+
+      return response.user;
+    } catch {
+      setUser(null);
+
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function logoutUser() {
+    await authService.logout();
+    logout();
+  }
+
   return {
     user,
     loading,
     isAuthenticated,
     register,
     login,
-    logout,
+    logout: logoutUser,
+    getCurrentUser,
   };
 }

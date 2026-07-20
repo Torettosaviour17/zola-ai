@@ -1,5 +1,5 @@
 import { api } from "@/lib/axios";
-import { AuthResponse, LoginData, RegisterData } from "@/types/auth";
+import { AuthResponse, LoginData, RegisterData, User } from "@/types/auth";
 
 class AuthService {
   async register(data: RegisterData) {
@@ -10,6 +10,15 @@ class AuthService {
 
   async login(data: LoginData) {
     const response = await api.post<AuthResponse>("/auth/login", data);
+
+    return response.data;
+  }
+
+  async getCurrentUser() {
+    const response = await api.get<{
+      success: boolean;
+      user: User;
+    }>("/users/me");
 
     return response.data;
   }
