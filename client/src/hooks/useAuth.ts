@@ -36,8 +36,6 @@ export function useAuth() {
 
   async function getCurrentUser() {
     try {
-      setLoading(true);
-
       const response = await authService.getCurrentUser();
 
       setUser(response.user);

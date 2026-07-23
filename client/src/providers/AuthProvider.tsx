@@ -11,8 +11,8 @@ export function AuthProvider({ children }: Props) {
   const { getCurrentUser } = useAuth();
 
   useEffect(() => {
-    getCurrentUser();
-  }, []);
+    void getCurrentUser();
+  }, [getCurrentUser]);
 
   return <>{children}</>;
 }

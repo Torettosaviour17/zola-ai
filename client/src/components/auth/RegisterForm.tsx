@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -13,6 +14,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { registerSchema, RegisterFormData } from "@/lib/validators/auth";
 
 export function RegisterForm() {
+  const router = useRouter();
+
   const { register: registerUser, loading } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +23,6 @@ export function RegisterForm() {
   const {
     register: registerField,
     handleSubmit,
-    reset,
     setError,
     formState: { errors },
   } = useForm<RegisterFormData>({
@@ -38,11 +40,17 @@ export function RegisterForm() {
       const fieldErrors = parsed.error.flatten().fieldErrors;
 
       if (fieldErrors.name?.[0]) {
-        setError("name", { type: "manual", message: fieldErrors.name[0] });
+        setError("name", {
+          type: "manual",
+          message: fieldErrors.name[0],
+        });
       }
 
       if (fieldErrors.email?.[0]) {
-        setError("email", { type: "manual", message: fieldErrors.email[0] });
+        setError("email", {
+          type: "manual",
+          message: fieldErrors.email[0],
+        });
       }
 
       if (fieldErrors.password?.[0]) {
@@ -58,9 +66,7 @@ export function RegisterForm() {
     try {
       await registerUser(parsed.data);
 
-      alert("Account created successfully 🎉");
-
-      reset();
+      router.replace("/dashboard");
     } catch (error: any) {
       alert(error?.response?.data?.message ?? "Something went wrong");
     }
