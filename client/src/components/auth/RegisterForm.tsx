@@ -74,17 +74,17 @@ export function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      <div>
+      <div className="space-y-2">
         <Label htmlFor="name">Full Name</Label>
 
         <Input id="name" placeholder="John Doe" {...registerField("name")} />
 
         {errors.name && (
-          <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+          <p className="text-sm text-destructive">{errors.name.message}</p>
         )}
       </div>
 
-      <div>
+      <div className="space-y-2">
         <Label htmlFor="email">Email</Label>
 
         <Input
@@ -95,11 +95,11 @@ export function RegisterForm() {
         />
 
         {errors.email && (
-          <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+          <p className="text-sm text-destructive">{errors.email.message}</p>
         )}
       </div>
 
-      <div>
+      <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
 
         <div className="relative">
@@ -113,14 +113,14 @@ export function RegisterForm() {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </button>
         </div>
 
         {errors.password && (
-          <p className="mt-1 text-sm text-red-500">{errors.password.message}</p>
+          <p className="text-sm text-destructive">{errors.password.message}</p>
         )}
       </div>
 

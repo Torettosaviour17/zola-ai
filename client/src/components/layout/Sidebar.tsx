@@ -48,18 +48,20 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-72 border-r bg-zinc-950 text-white">
-      <div className="p-6 text-2xl font-bold">
-        Zola<span className="text-blue-500">AI</span>
+    <aside className="fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground shadow-xl shadow-black/10">
+      <div className="p-6 text-2xl font-bold tracking-tight">
+        Zola<span className="text-sidebar-primary">AI</span>
       </div>
 
-      <nav className="space-y-2 px-3">
+      <nav className="flex-1 space-y-2 overflow-y-auto px-3">
         {links.map(({ href, icon: Icon, label }) => (
           <Link
             key={href}
             href={href}
             className={`flex items-center gap-3 rounded-lg px-4 py-3 transition ${
-              pathname === href ? "bg-blue-600" : "hover:bg-zinc-800"
+              pathname === href
+                ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
+                : "text-sidebar-foreground/75 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
             }`}
           >
             <Icon size={20} />

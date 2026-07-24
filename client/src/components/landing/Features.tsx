@@ -26,14 +26,14 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="bg-zinc-950 py-24 text-white">
+    <section id="features" className="bg-muted/30 py-24 text-foreground">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold sm:text-5xl">
             Everything You Need
           </h2>
 
-          <p className="mt-4 text-zinc-400">
+          <p className="mt-4 text-muted-foreground">
             One platform for creating AI-powered cinematic videos.
           </p>
         </div>
@@ -45,13 +45,13 @@ export function Features() {
             return (
               <div
                 key={feature.title}
-                className="rounded-3xl border border-zinc-800 bg-zinc-900 p-8 transition hover:-translate-y-2 hover:border-violet-500"
+                className="rounded-3xl border bg-card p-8 text-card-foreground shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
               >
-                <Icon className="mb-6 h-10 w-10 text-violet-500" />
+                <Icon className="mb-6 h-10 w-10 text-primary" />
 
                 <h3 className="text-xl font-semibold">{feature.title}</h3>
 
-                <p className="mt-3 text-sm leading-7 text-zinc-400">
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
                   {feature.description}
                 </p>
               </div>

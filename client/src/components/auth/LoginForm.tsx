@@ -85,7 +85,7 @@ export function LoginForm() {
             {...register("email")}
           />
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
+            <p className="text-sm text-destructive">{errors.email.message}</p>
           )}
         </div>
 
@@ -101,13 +101,13 @@ export function LoginForm() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           {errors.password && (
-            <p className="text-sm text-red-500">{errors.password.message}</p>
+            <p className="text-sm text-destructive">{errors.password.message}</p>
           )}
         </div>
 

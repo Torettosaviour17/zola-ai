@@ -6,6 +6,9 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
+import projectRoutes from "./routes/project.routes";
+import sceneRoutes from "./routes/scene.routes";
+import aiRoutes from "./routes/ai.routes";
 
 const app = express();
 
@@ -29,6 +32,9 @@ app.use(morgan("dev"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/scenes", sceneRoutes);
+app.use("/api/ai", aiRoutes);
 
 app.get("/", (_, res) => {
   res.json({
